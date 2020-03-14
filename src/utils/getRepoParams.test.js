@@ -11,6 +11,7 @@ describe('getRepoParams', () => {
     jest.mock('execa', () => async () => ({
       stdout: '121231257615356124',
     }));
+    jest.mock('env-ci', () => () => ({}));
     const getRepoParams = require('./getRepoParams');
     const params = await getRepoParams();
     expect(params).toMatchObject({

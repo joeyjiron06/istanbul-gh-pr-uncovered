@@ -101,8 +101,12 @@ describe('getUncoveredLines', () => {
     ]);
   });
 
-  it('should return an empty array when not in a CI environment', async () => {
-    delete process.env.CI;
+  it.only('should return an empty array when not in a CI environment', async () => {
+    jest.mock('env-ci', () => () => ({
+      isCi: false,
+    }));
+    // eslint-disable-next-line global-require,no-shadow
+    const getUncoveredLines = require('./index');
 
     const uncoveredLines = await getUncoveredLines({
       coverageMap,
