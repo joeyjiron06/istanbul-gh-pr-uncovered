@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:json/recommended"
+  ],
+  "env": {
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.test.js"
+      ],
+      "plugins": [
+        "jest"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
