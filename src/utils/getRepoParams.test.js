@@ -19,9 +19,6 @@ describe('getRepoParams', () => {
     jest.mock('env-ci', () => () => ({
       slug: 'slugOwner/slugRepo',
     }));
-    // jest.mock('execa', () => async () => ({
-    //   stdout: 'https://github.com/slugOwner/slugRepo.git',
-    // }));
     const getRepoParams = require('./getRepoParams');
     const params = await getRepoParams();
     expect(params).toEqual({
