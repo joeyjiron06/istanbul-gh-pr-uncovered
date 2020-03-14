@@ -4,7 +4,6 @@ const coverageMap = require('../testFixtures/coverageMap.json');
 const ghPRFiles = require('../testFixtures/ghPRFiles-full.json');
 const { appId, privateKey } = require('../testFixtures/ghAppCreds');
 
-const { OWNER, REPO } = process.env;
 
 describe('getUncoveredLines', () => {
   beforeEach(() => {
@@ -20,7 +19,7 @@ describe('getUncoveredLines', () => {
     const repoId = 12222;
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/installation`)
+      .get(new RegExp('/repos/.*/installation'))
       .reply(200, {
         id: repoId,
       });
@@ -30,14 +29,14 @@ describe('getUncoveredLines', () => {
       .reply(200, {});
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls`)
+      .get(new RegExp('/repos/.*/pulls'))
       .query(true)
       .reply(200, [{
         number: pullRequestNumber,
       }]);
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls/${pullRequestNumber}/files`)
+      .get(new RegExp(`/repos/.*/pulls/${pullRequestNumber}/files`))
       .reply(200, [
         {
           sha: '3faebd61e742c528445ae4aa708e3db3b879e3e6',
@@ -67,7 +66,7 @@ describe('getUncoveredLines', () => {
     const repoId = 12222;
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/installation`)
+      .get(new RegExp('/repos/.*/installation'))
       .reply(200, {
         id: repoId,
       });
@@ -77,14 +76,14 @@ describe('getUncoveredLines', () => {
       .reply(200, {});
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls`)
+      .get(new RegExp('/repos/.*/pulls'))
       .query(true)
       .reply(200, [{
         number: pullRequestNumber,
       }]);
 
     nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls/${pullRequestNumber}/files`)
+      .get(new RegExp(`/repos/.*/pulls/${pullRequestNumber}/files`))
       .reply(200, ghPRFiles);
 
 

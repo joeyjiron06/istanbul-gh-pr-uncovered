@@ -7,6 +7,7 @@ module.exports = async () => {
   const regex = /https?:\/\/.*\/(.+)\/(.+)\.git/;
   const url = (await execa('git', ['rev-parse', 'HEAD'])).stdout;
   const match = url.match(regex);
+  const baseUrl = process.env.GH_API || process.env.GITHUB_URL || 'https://api.github.com';
 
   let owner;
   let repo;
@@ -25,5 +26,6 @@ module.exports = async () => {
   return {
     owner: owner || process.env.OWNER,
     repo: repo || process.env.REPO,
+    baseUrl,
   };
 };

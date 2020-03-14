@@ -7,5 +7,5 @@ module.exports = async () => {
   });
 
 
-  console.log('prcess.env', process.env);
+  // console.log('prcess.env', process.env);
 };
