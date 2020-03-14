@@ -8,4 +8,5 @@ module.exports = {
     '<rootDir>/src/**/*.js',
     '!<rootDir>/src/**/*.test.js',
   ],
+  globalSetup: '<rootDir>/globalSetup.js',
 };

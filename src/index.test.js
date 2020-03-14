@@ -1,8 +1,3 @@
-process.env.OWNER = 'test';
-process.env.REPO = 'test';
-process.env.GH_API = 'https://api.github.com';
-process.env.CI = 'true';
-
 const nock = require('nock');
 const getUncoveredLines = require('./index');
 const coverageMap = require('../testFixtures/coverageMap.json');
