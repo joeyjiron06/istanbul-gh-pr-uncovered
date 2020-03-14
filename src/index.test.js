@@ -18,6 +18,7 @@ describe('getUncoveredLines', () => {
     const pullRequestNumber = 123;
     const repoId = 12222;
 
+    console.log('process.env.GH_API', process.env.GH_API);
     nock(process.env.GH_API)
       .get(new RegExp('/repos/.*/installation'))
       .reply(200, {

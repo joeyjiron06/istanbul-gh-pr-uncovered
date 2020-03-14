@@ -7,5 +7,6 @@ module.exports = async () => {
   });
 
 
-  // console.log('prcess.env', process.env);
+  console.log('prcess.env.GH_API', process.env.GH_API);
+  console.log('prcess.env.GITHUB_URL', process.env.GITHUB_URL);
 };
