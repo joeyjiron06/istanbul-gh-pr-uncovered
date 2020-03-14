@@ -1,7 +1,7 @@
 {
-  "name": "npm-package-template",
+  "name": "istanbul-gh-pr-uncovered",
   "version": "1.0.0",
-  "description": "",
+  "description": "Get ",
   "main": "src/index.js",
   "types": "types.d.ts",
   "devDependencies": {
@@ -12,22 +12,23 @@
     "eslint-plugin-json": "^2.1.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.8"
+    "lint-staged": "^10.0.8",
+    "nock": "^12.0.2"
   },
   "scripts": {
-    "test": "jest src/*.test.js",
-    "lint": "eslint \"**/*.js\" \"**/*.ts\" \"**/*.json\""
+    "test": "jest --config=jest.config.js",
+    "lint": "eslint \"**/*.js\" \"**/*.json\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joeyjiron06/npm-package-template.git"
+    "url": "git+https://github.com/joeyjiron06/istanbul-gh-pr-uncovered.git"
   },
   "author": "Joey Jiron <joeyjiron06@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joeyjiron06/npm-package-template/issues"
+    "url": "https://github.com/joeyjiron06/istanbul-gh-pr-uncovered/issues"
   },
-  "homepage": "https://github.com/joeyjiron06/npm-package-template#readme",
+  "homepage": "https://github.com/joeyjiron06/istanbul-gh-pr-uncovered#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -35,6 +36,14 @@
     }
   },
   "lint-staged": {
-    "*": "npm run lint -- --fix"
+    "*.js(on)": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "@octokit/app": "^4.2.0",
+    "@octokit/rest": "^17.1.0",
+    "env-ci": "^5.0.2",
+    "execa": "^4.0.0",
+    "git-file-patch-parser": "^1.0.0",
+    "istanbul-lib-coverage": "^3.0.0"
   }
 }
