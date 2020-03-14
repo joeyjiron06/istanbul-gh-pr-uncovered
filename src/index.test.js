@@ -4,6 +4,7 @@ const coverageMap = require('../testFixtures/coverageMap.json');
 const ghPRFiles = require('../testFixtures/ghPRFiles-full.json');
 const { appId, privateKey } = require('../testFixtures/ghAppCreds');
 
+const GH_API = 'https://api.github.com';
 
 describe('getUncoveredLines', () => {
   beforeEach(() => {
@@ -18,25 +19,24 @@ describe('getUncoveredLines', () => {
     const pullRequestNumber = 123;
     const repoId = 12222;
 
-    console.log('process.env.GH_API', process.env.GH_API);
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp('/repos/.*/installation'))
       .reply(200, {
         id: repoId,
       });
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .post(`/app/installations/${repoId}/access_tokens`)
       .reply(200, {});
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp('/repos/.*/pulls'))
       .query(true)
       .reply(200, [{
         number: pullRequestNumber,
       }]);
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp(`/repos/.*/pulls/${pullRequestNumber}/files`))
       .reply(200, [
         {
@@ -66,24 +66,24 @@ describe('getUncoveredLines', () => {
     const pullRequestNumber = 123;
     const repoId = 12222;
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp('/repos/.*/installation'))
       .reply(200, {
         id: repoId,
       });
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .post(`/app/installations/${repoId}/access_tokens`)
       .reply(200, {});
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp('/repos/.*/pulls'))
       .query(true)
       .reply(200, [{
         number: pullRequestNumber,
       }]);
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .get(new RegExp(`/repos/.*/pulls/${pullRequestNumber}/files`))
       .reply(200, ghPRFiles);
 
