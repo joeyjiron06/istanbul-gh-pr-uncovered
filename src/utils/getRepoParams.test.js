@@ -8,6 +8,9 @@ describe('getRepoParams', () => {
   it('should return owner and repo from environment variables by default', async () => {
     process.env.OWNER = 'testOWNER';
     process.env.REPO = 'testRepo';
+    jest.mock('execa', () => async () => ({
+      stdout: '121231257615356124',
+    }));
     const getRepoParams = require('./getRepoParams');
     const params = await getRepoParams();
     expect(params).toMatchObject({
@@ -16,6 +19,9 @@ describe('getRepoParams', () => {
     });
   });
   it('should return owner and repo from slug', async () => {
+    jest.mock('execa', () => async () => ({
+      stdout: '121231257615356124',
+    }));
     jest.mock('env-ci', () => () => ({
       slug: 'slugOwner/slugRepo',
     }));
