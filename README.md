@@ -1,5 +1,7 @@
 # istanbul-gh-pr-uncovered
 
+![Build Status](https://github.com/joeyjiron06/istanbul-gh-pr-uncovered/workflows/Node.js%20Test%20CI/badge.svg?branch=master)
+
 Uses the istanbul coverageMap and get's the uncovered lines from the current pull request related to the last commit that this process it running on.
 
 ## Installation
