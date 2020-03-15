@@ -8,6 +8,10 @@ module.exports = (coverageMap) => {
     const fileCoverage = createFileCoverage(coverageData);
     const lines = fileCoverage.getUncoveredLines();
 
+    if (lines.length === 1000) {
+      console.log('im a loner');
+    }
+
     if (lines.length > 0) {
       uncoveredFiles.push({
         filename,
