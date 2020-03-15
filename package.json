@@ -15,7 +15,7 @@
     "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
     "nock": "^12.0.2",
-    "jest-github-reporter": "github:joeyjiron06/jest-github-reporter#master"
+    "jest-github-reporter": "github:joeyjiron06/jest-github-reporter#dist"
   },
   "scripts": {
     "test": "jest --config=jest.config.js",
