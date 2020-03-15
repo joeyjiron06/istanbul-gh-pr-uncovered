@@ -101,7 +101,7 @@ describe('getUncoveredLines', () => {
     ]);
   });
 
-  it.only('should return an empty array when not in a CI environment', async () => {
+  it('should return an empty array when not in a CI environment', async () => {
     jest.mock('env-ci', () => () => ({
       isCi: false,
     }));
