@@ -1,38 +1,34 @@
-process.env.OWNER = 'test';
-process.env.REPO = 'test';
-process.env.GH_API = 'https://api.github.com';
-
 const nock = require('nock');
 const fetchPRFiles = require('./fetchPRFiles');
 const ghPrFiles = require('../../testFixtures/ghPRFiles-short.json');
 const { appId, privateKey } = require('../../testFixtures/ghAppCreds');
 
-const { OWNER, REPO } = process.env;
+const GH_API = 'https://api.github.com';
 
 describe('fetchPRFiles', () => {
   it('should return the pr files when all gh apis succeed', async () => {
     const pullRequestNumber = 123;
     const repoId = 12222;
 
-    nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/installation`)
+    nock(GH_API)
+      .get(new RegExp('/repos/.*/installation'))
       .reply(200, {
         id: repoId,
       });
 
-    nock(process.env.GH_API)
+    nock(GH_API)
       .post(`/app/installations/${repoId}/access_tokens`)
       .reply(200, {});
 
-    nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls`)
+    nock(GH_API)
+      .get(new RegExp('/repos/.*/pulls'))
       .query(true)
       .reply(200, [{
         number: pullRequestNumber,
       }]);
 
-    nock(process.env.GH_API)
-      .get(`/repos/${OWNER}/${REPO}/pulls/${pullRequestNumber}/files`)
+    nock(GH_API)
+      .get(new RegExp(`/repos/.*/pulls/${pullRequestNumber}/files`))
       .reply(200, ghPrFiles);
 
 
