@@ -19,6 +19,7 @@ describe('getUncoveredLines', () => {
     expect(true).toBe(false);
   });
 
+
   it('should return an empty array when no coverageMap is in testResults', async () => {
     const uncoveredLines = await getUncoveredLines({});
     expect(uncoveredLines).toEqual([]);
