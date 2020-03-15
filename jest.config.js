@@ -10,7 +10,8 @@ module.exports = {
   ],
   reporters: [
     'default',
-    ['jest-github-reporter', { failOnUncoveredLines: true }],
+    'jest-github-reporter',
+    // ['jest-github-reporter', { failOnUncoveredLines: true }],
   ],
   globalSetup: '<rootDir>/globalSetup.js',
 };
