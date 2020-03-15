@@ -30,7 +30,6 @@ async function authenticate({ appId, privateKey }) {
     installationId: response.data.id,
   });
 
-
   return new Octokit({ auth: token, baseUrl });
 }
 
