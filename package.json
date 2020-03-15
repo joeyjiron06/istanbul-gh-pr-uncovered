@@ -39,6 +39,15 @@
   "lint-staged": {
     "*.js(on)": "npm run lint -- --fix"
   },
+  "keywords": [
+    "istanbul",
+    "github",
+    "pull request",
+    "uncovered",
+    "lines",
+    "node",
+    "npm"
+  ],
   "dependencies": {
     "@octokit/app": "^4.2.0",
     "@octokit/rest": "^17.1.0",
