@@ -9,6 +9,10 @@ const GH_API = 'https://api.github.com';
 describe('getUncoveredLines', () => {
   beforeEach(() => {
     jest.resetModules();
+    nock.cleanAll();
+  });
+  afterAll(() => {
+    nock.cleanAll();
   });
 
   it('should return an empty array when no coverageMap is in testResults', async () => {
