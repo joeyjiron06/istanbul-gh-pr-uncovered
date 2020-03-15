@@ -8,7 +8,6 @@ const getUncoveredFiles = require('./utils/getUncoveredFiles');
  * no coverageMap is given.
  */
 module.exports = async ({ coverageMap, appId, privateKey }) => {
-  console.log('envCi().isCi', envCi().isCi);
   if (!coverageMap || !envCi().isCi) {
     return [];
   }
