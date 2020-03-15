@@ -6,6 +6,12 @@ const { appId, privateKey } = require('../../testFixtures/ghAppCreds');
 const GH_API = 'https://api.github.com';
 
 describe('fetchPRFiles', () => {
+  beforeEach(() => {
+    nock.cleanAll();
+  });
+  afterAll(() => {
+    nock.cleanAll();
+  });
   it('should return the pr files when all gh apis succeed', async () => {
     const pullRequestNumber = 123;
     const repoId = 12222;

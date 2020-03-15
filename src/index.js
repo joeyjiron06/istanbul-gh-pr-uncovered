@@ -24,6 +24,12 @@ module.exports = async ({ coverageMap, appId, privateKey }) => {
       return;
     }
 
+    if (ghPRFile.length) {
+      console.log('hello, im uncovered');
+      console.log('so am i');
+      console.log('me too!!');
+    }
+
     const uncoveredLines = ghPRFile.lines
       .filter((line) => line.modification === 'added') // filter only added lines in pr
       .filter((line) => jestFile.lines.includes(line.lineNumber)) // filter only uncovered lines
