@@ -3,10 +3,8 @@ const { createFileCoverage } = require('istanbul-lib-coverage');
 module.exports = (coverageMap) => {
   const uncoveredFiles = [];
 
-  Object.keys(coverageMap).forEach((filename) => {
-    const coverageData = coverageMap[filename];
-    const fileCoverage = createFileCoverage(coverageData);
-    const lines = fileCoverage.getUncoveredLines();
+  Object.keys(coverageMap.data).forEach((filename) => {
+    const lines = createFileCoverage(coverageMap.data[filename].data).getUncoveredLines();
 
     if (lines.length > 0) {
       uncoveredFiles.push({
